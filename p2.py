@@ -37,20 +37,20 @@ class Converter:
         match_duration = re.search(r"Duration: (\d{2}:\d{2}:\d{2}\.\d{2})", output)
         if match_duration:
             duration = match_duration.group(1)
-            print(f"Duración del Video: {duration}")
+            print(f"Duration: {duration}")
 
         # Busca y muestra el códec de video si se encuentra en la salida de FFmpeg
         match_codec = re.search(r"Stream #0:0: Video: ([\w]+)", output)
         if match_codec:
             video_codec = match_codec.group(1)
-            print(f"Códec de Video: {video_codec}")
+            print(f"Codec: {video_codec}")
 
         # Busca y muestra la resolución del video si se encuentra en la salida de FFmpeg
         match_resolution = re.search(r"Stream #0:0: Video: .+?, (\d+)x(\d+)", output)
         if match_resolution:
             width = match_resolution.group(1)
             height = match_resolution.group(2)
-            print(f"Resolución: {width}x{height}")
+            print(f"Resolution: {width}x{height}")
 
         # Busca y muestra el bitrate del video si se encuentra en la salida de FFmpeg
         match_bitrate = re.search(r"bitrate: (\d+) kb/s", output)
@@ -62,18 +62,21 @@ class Converter:
         match_format = re.search(r"Input #0, ([\w]+),", output)
         if match_format:
             video_format = match_format.group(1)
-            print(f"Formato de Video: {video_format}")
+            print(f"Video format: {video_format}")
 
 #Solicita por la terminal el nombre del video con el que ejecutar las funciones
 input_video = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
 
 converter = Converter(input_video)
-# Crear una instancia de la clase heredada
-p1 = rgbyuv('int')
+# Creamos instancias de las clases heredadas
+resize = FfmpegResize()
+blackandwhite = BlackAndWhite()
 
 converter.convert_to_mp2('BBB.mp2')
 converter.modify_resolution('resized_BBB.mp4', 360, 120)
 converter.change_chroma_subsampling('subsampled_BBB.mp4', 'yuv420p')
+resize.resize(input_video, 'resized2_BBB.mp4',720,480)
+blackandwhite.image_to_bw(input_video,'bw.mp4')
 converter.get_video_info('BBB.mp2')
-# Redimensionar el video a 720p de resolución
+
 
