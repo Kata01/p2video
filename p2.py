@@ -77,6 +77,6 @@ converter.modify_resolution('resized_BBB.mp4', 360, 120)
 converter.change_chroma_subsampling('subsampled_BBB.mp4', 'yuv420p')
 resize.resize(input_video, 'resized2_BBB.mp4',720,480)
 blackandwhite.image_to_bw(input_video,'bw.mp4')
-converter.get_video_info('BBB.mp2')
+converter.get_video_info('BBB.mp4')
 
 
