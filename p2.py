@@ -60,8 +60,12 @@ class VideoConverter:
             video_format = match_format.group(1)
             print(f"Formato de Video: {video_format}")
 
+#Solicita por la terminal el nombre del video con el que ejecutar las funciones
+input_video_name = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
 
-converter = VideoConverter('BBB.mp4')
+converter = VideoConverter(input_video_name)
+
 converter.convert_to_mp2('BBB.mp2')
 converter.modify_resolution('resized_BBB.mp4', 360, 120)
 converter.change_chroma_subsampling('subsampled_BBB.mp4', 'yuv420p')
+converter.get_video_info('BBB.mp2')
