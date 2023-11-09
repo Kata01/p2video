@@ -75,7 +75,7 @@ blackandwhite = BlackAndWhite()
 converter.convert_to_mp2('BBB.mp2')
 converter.modify_resolution('resized_BBB.mp4', 360, 120)
 converter.change_chroma_subsampling('subsampled_BBB.mp4', 'yuv420p')
-resize.resize(input_video, 'resized2_BBB.mp4',720,480)
+resize.resize(input_video, 'resized2_BBB.mp4',720, 2)
 blackandwhite.image_to_bw(input_video,'bw.mp4')
 converter.get_video_info('BBB.mp4')
 
