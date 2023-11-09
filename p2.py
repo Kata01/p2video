@@ -2,10 +2,10 @@ import subprocess
 import re
 from rgb_yuv import RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter
 
-class Converter(RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter):
+class rgbyuv(RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter):
     pass
 
-class VideoConverter:
+class Converter:
     def __init__(self, input_file):
         self.input_file = input_file
 
@@ -69,9 +69,11 @@ input_video = input("Ingrese el nombre del archivo de video de entrada incluyend
 
 converter = Converter(input_video)
 # Crear una instancia de la clase heredada
-video_processor = VideoConverter()
+p1 = rgbyuv('int')
 
 converter.convert_to_mp2('BBB.mp2')
 converter.modify_resolution('resized_BBB.mp4', 360, 120)
 converter.change_chroma_subsampling('subsampled_BBB.mp4', 'yuv420p')
 converter.get_video_info('BBB.mp2')
+# Redimensionar el video a 720p de resolución
+
