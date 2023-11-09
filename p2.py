@@ -2,7 +2,7 @@ import subprocess
 import re
 from rgb_yuv import RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter
 
-class VideoConverter(RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter):
+class Converter(RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter):
     pass
 
 class VideoConverter:
@@ -65,9 +65,9 @@ class VideoConverter:
             print(f"Formato de Video: {video_format}")
 
 #Solicita por la terminal el nombre del video con el que ejecutar las funciones
-input_video_name = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
+input_video = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
 
-converter = VideoConverter(input_video_name)
+converter = Converter(input_video)
 # Crear una instancia de la clase heredada
 video_processor = VideoConverter()
 
