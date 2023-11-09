@@ -1,5 +1,9 @@
 import subprocess
 import re
+from rgb_yuv import RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter
+
+class VideoConverter(RgbYuv, FfmpegResize, Serpentine, BlackAndWhite, RunLength, DCTConverter):
+    pass
 
 class VideoConverter:
     def __init__(self, input_file):
@@ -64,6 +68,8 @@ class VideoConverter:
 input_video_name = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
 
 converter = VideoConverter(input_video_name)
+# Crear una instancia de la clase heredada
+video_processor = VideoConverter()
 
 converter.convert_to_mp2('BBB.mp2')
 converter.modify_resolution('resized_BBB.mp4', 360, 120)
