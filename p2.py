@@ -68,8 +68,7 @@ class Converter:
 input_video = input("Ingrese el nombre del archivo de video de entrada incluyendo la extensión. (ej: BBB.mp4): ")
 
 converter = Converter(input_video)
-# Creamos instancias de las clases heredadas
-resize = FfmpegResize()
+# Para usar la clase heredada
 blackandwhite = BlackAndWhite()
 
 converter.convert_to_mp2('BBB.mp2')
